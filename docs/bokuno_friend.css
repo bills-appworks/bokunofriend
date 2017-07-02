@@ -1,0 +1,343 @@
+﻿html, body {
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  background-color: #FFFFFF;
+/*
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+*/
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","Meiryo";
+}
+
+.layout_table_vertical {
+  display: table;
+}
+
+.layout_table_vertical > div {
+  display: table-row;
+}
+
+.layout_table_vertical > div > span {
+  display: table-cell;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.layout_flex_vertical {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.layout_flex_vertical > * {
+  margin: 4px;
+  max-width: 100%;
+}
+
+.layout_flex_horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+}
+
+.layout_flex_horizontal > * {
+  margin: 4px;
+  max-width: 100%;
+}
+
+.layout_flex_nowrap {
+  flex-wrap: nowrap;
+}
+
+hr {
+  border: 0;
+  height: 10px;
+  background-size: contain;
+  background-image: url(no-01.png);
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
+}
+
+.frame {
+  border: inset 4px rgba(192, 255, 128, 0.8);
+  border-radius: 6px;
+}
+
+.frame_hover {
+  border: inset 4px rgba(64, 64, 64, 0.8);
+}
+
+button {
+  padding .3em .8em;
+  border: 1px solid rgba(0, 32, 0, 0.2);
+  background: #88AA55 linear-gradient(hsla(0, 0%, 100%, 0.2), transparent);
+  border-radius: 0.2em;
+  box-shadow: 0 0.05em 0.25em rgba(0, 0, 0, 0.5);
+  color: white;
+  text-shadow: 0 -0.05em 0.05em rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+button:disabled {
+  background: #999999 linear-gradient(hsla(0, 0%, 100%, 0.2), transparent);
+  color: lightgray;
+}
+
+#contents {
+  background-color: rgba(91, 121, 61, 1);
+  border-radius: 40px;
+  border: outset 10px rgba(192, 255, 128, 0.3);
+  margin: 40px;
+  padding: 20px;
+  color: #FFFFFF;
+}
+
+#title {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+}
+
+#title img {
+  max-width: 100%;
+}
+
+#title img:last-child {
+  height: 3em;
+}
+
+.original_element {
+  box-sizing: border-box;
+  width: calc(50% - 4px * 2);
+  height: 100%;
+}
+
+.image_title img {
+  height: 2em;
+}
+
+.view_original {
+  width: 100%;
+  height: calc(100% * 9 / 16);
+}
+
+.ui_image_file {
+  display: none;
+}
+
+.ui_image_file_view_text {
+  background-color: rgba(255, 255, 255, 0);
+  color: #FFFFFF;
+}
+
+/* 合成画像 */
+/* 調整UI */
+.layout_composite_config_01 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 合成画像  調整UI */
+.layout_composite_config_02 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 調整UI */
+/* 合成画像 */
+.layout_composite_config_03 {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 調整UI  合成画像 */
+.layout_composite_config_04 {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#area_composite, #area_config {
+  width: 100%;
+}
+
+#bokuno_friend_canvas {
+  width: 100%;
+  height: calc(100% * 9 / 16);
+}
+
+.ui_range {
+  color: #FFFFFF;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.ui_range > .label {
+  text-align: right;
+}
+
+.ui_range > .numeric {
+  width: 4em;
+}
+
+.text_disable {
+  color: gray;
+}
+
+.view_image_on {
+  background-image: '';
+  background-color: #FFFFFF;
+}
+
+.view_image_off {
+  background-image: url(canvas_bg.png);
+  background-color: #99AA22;
+}
+
+.image_off_screen {
+  display: none;
+}
+
+#example p {
+  max-width: 100%;
+  text-align: center;
+}
+
+.image_example {
+  max-width: 100%;
+}
+
+.image_example img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+}
+
+#serval {
+  width: 200px;
+}
+
+#site_image img {
+  max-width: 100%;
+  height: auto;
+}
+
+#thanks, #author {
+  max-width: 100%;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+#thanks a {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+#thanks a, #author a {
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6),
+               -1px 1px 1px rgba(255, 255, 255, 0.6),
+               -1px -1px 1px rgba(255, 255, 255, 0.6),
+               1px -1px 1px rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 1079px) {
+
+#contents {
+  margin: 20px;
+}
+
+.original_element {
+  width: 100%;
+}
+
+.original_element:last-child {
+  margin-top: 10px;
+}
+
+} /* @media (max-width: 1079px) */
+
+@media (max-width: 959px) {
+
+#contents {
+  padding: 10px;
+}
+
+} /* @media (max-width: 959px) */
+
+
+@media (max-width: 599px) {
+
+#contents {
+  margin: 4px;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.layout_flex_nowrap {
+  flex-wrap: wrap;
+}
+
+.layout_table_vertical {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.layout_table_vertical > div {
+  display: block;
+}
+
+.layout_table_vertical > div > span {
+  display: block;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.ui_range > .label {
+  text-align: center;
+}
+
+.ui_range > .numeric {
+  text-align: center;
+  width: auto;
+}
+
+button {
+  padding: 1em .8em;
+}
+
+#composite_zoom_container, #switch_composite_config {
+  display: none;
+}
+
+} /* @media (max-width: 599px) */
+

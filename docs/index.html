@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>けものフレンズ アニメエンディング風 画像ジェネレータ</title>
+    <link rel="stylesheet" href="bokuno_friend.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+    <script src="bokuno_friend.js"></script>
+    <!-- IEがdownload属性未対応のため以下のライブラリを利用 -->
+    <script src="canvas-toBlob.js"></script>
+    <script src="FileSaver.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="icon" href="bokuno_friend_32x32.png" sizes="32x32" />
+    <link rel="icon" href="bokuno_friend_192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="bokuno_friend_180x180.png" />
+    <meta name="msapplication-TileImage" content="bokuno_friend_270x270.png">
+    <meta name="description" content="画像を2枚(フレンズ・背景)指定すると、合成して「けものフレンズ」アニメエンディング風の画像を生成するアプリです。">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="けものフレンズ アニメエンディング風 画像ジェネレータ">
+    <meta property="og:url" content="http://fancycat-info.net/bokunofriend/">
+    <meta property="og:description" content="画像を2枚(フレンズ・背景)指定すると、合成して「けものフレンズ」アニメエンディング風の画像を生成するアプリです。">
+    <meta property="og:image" content="http://fancycat-info.net/bokunofriend/share_image.png">
+    <meta property="og:site_name" content="けものフレンズ アニメエンディング風 画像ジェネレータ">
+    <meta property="og:locale" content="ja_JP">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@billstw">
+    <meta name="twitter:creator:id" content="@billstw">
+    <meta name="twitter:description" content="画像を2枚(フレンズ・背景)指定すると、合成して「けものフレンズ」アニメエンディング風の画像を生成するアプリです。">
+    <meta name="twitter:title" content="けものフレンズ アニメエンディング風 画像ジェネレータ">
+    <meta name="twitter:image" content="http://fancycat-info.net/bokunofriend/share_image.png">
+    <meta name="twitter:image:alt" content="けものフレンズ アニメエンディング風 画像ジェネレータ">
+    <script src="google_analytics.js"></script>
+    <!-- Google+ -->
+    <script src="https://apis.google.com/js/platform.js" async defer>
+      {lang: 'ja'}
+    </script>
+  </head>
+  <body>
+    <!-- Facebook -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.9";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <div id="contents">
+      <div id="title">
+        <img class="image_reducible" src="title_03.png" alt="画像ジェネレータ">
+        <img class="image_reducible" src="title_02.png" alt="アニメエンディング風">
+        <img class="image_reducible" src="title_01.png" alt="けものフレンズ">
+      </div>
+      <hr />
+      <h2>「がぞーを指定するのだ！」</h2>
+      <div id="original_container" class="layout_flex_horizontal">
+        <div class="original_element">
+          <div class="image_title layout_flex_horizontal">
+            <img src="image_friend.png" alt="フレンズがぞー">
+          </div>
+          <div class="original_canvas_container layout_flex_horizontal">
+            <canvas id="friend_image_original_thumbnail" class="view_original view_image_off frame" draggable="false" data-type="friend" data-file="friend_image_file"></canvas>
+            <canvas id="friend_image_off_screen" class="image_off_screen"></canvas>
+          </div>
+          <div class="layout_flex_horizontal">
+            <div class="layout_flex_horizontal frame">
+              <button id="friend_image_file_view" class="ui_image_file_view" data-type="friend">フレンズ画像ファイル選択</button>
+              <input type="text" readonly id="friend_image_file_view_text" class="ui_image_file_view ui_image_file_view_text" value="" data-type="friend">
+              <input type="file" accept="image/*" id="friend_image_file" class="ui_image_file" data-type="friend">
+              <button id="friend_image_off" class="ui_image_off" data-type="friend" data-file="friend_image_file">解除</button>
+            </div>
+          </div>
+        </div>
+        <div class="original_element">
+          <div class="image_title layout_flex_horizontal">
+            <img src="image_background.png" alt="背景がぞー">
+          </div>
+          <div class="original_canvas_container layout_flex_horizontal">
+            <canvas id="background_image_original_thumbnail" class="view_original view_image_off frame" draggable="false" data-type="background" data-file="background_image_file"></canvas>
+            <canvas id="background_image_off_screen" class="image_off_screen"></canvas>
+          </div>
+          <div class="layout_flex_horizontal">
+            <div class="layout_flex_horizontal frame">
+              <button id="background_image_file_view" class="ui_image_file_view" data-type="background">背景画像ファイル選択</button>
+              <input type="text" readonly id="background_image_file_view_text" class="ui_image_file_view ui_image_file_view_text" value="" data-type="background">
+              <input type="file" accept="image/*" id="background_image_file" class="ui_image_file" data-type="background">
+              <button id="background_image_off" class="ui_image_off" data-type="background" data-file="background_image_file">解除</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div id="area_composite_config" class="layout_composite_config_01" data-layout="type01">
+        <div id="area_composite">
+          <h2>「われわれは合成したのです」「なのです」</h2>
+          <div class="image_title layout_flex_horizontal">
+            <img src="image_composite.png" alt="合成がぞー">
+          </div>
+          <div id="bokuno_friend_canvas_container" class="layout_flex_horizontal">
+            <canvas id="bokuno_friend_canvas" class="view_image_off frame"></canvas>
+          </div>
+          <div id="composite_ui_container" class="layout_flex_horizontal">
+            <div class="layout_flex_horizontal frame">
+              <div class="layout_flex_horizontal">
+                <button id="composite_saveas">ダウンロード</button>
+                <button id="composite_popup">別画面表示</button>
+                <button id="composite_original_friend">フレンズ表示</button>
+              </div>
+              <div id="composite_zoom_container" class="layout_flex_horizontal layout_flex_nowrap ui_range">
+                <span class="label">表示縮小</span><span><input type="range" id="composite_zoom" class="ui_config_composite"></span><span id="composite_zoom_numeric" class="numeric"></span>
+              </div>
+              <button id="switch_composite_config">→↑←↓</button>
+            </div>
+          </div>
+        </div>
+        <div id="area_config">
+          <h2>「あなたは調整が得意なフレンズなんだね！」</h2>
+          <div class="image_title layout_flex_horizontal">
+            <img src="image_config.png" alt="フレンズ調整">
+          </div>
+          <div id="config_ui_container" class="layout_flex_horizontal">
+            <div class="layout_flex_vertical frame">
+              <div id="config_ui_range_container" class="layout_table_vertical">
+                <div class="layout_flex_horizontal layout_flex_nowrap ui_range">
+                  <span class="label">とうめい</span><span><input type="range" id="config_friend_transparency" class="ui_config_friend"></span><span id="config_friend_transparency_numeric" class="numeric"></span>
+                </div>
+                <div class="layout_flex_horizontal layout_flex_nowrap ui_range">
+                  <span class="label">なじませる</span><span><input type="range" id="config_friend_approximate" class="ui_config_friend"></span><span id="config_friend_approximate_numeric" class="numeric"></span>
+                </div>
+                <div class="layout_flex_horizontal layout_flex_nowrap ui_range">
+                  <span class="label">おおきくちいさく</span><span><input type="range" id="config_friend_zoom" class="ui_config_composite"></span><span id="config_friend_zoom_numeric" class="numeric"></span>
+                </div>
+                <div class="layout_flex_horizontal layout_flex_nowrap ui_range">
+                  <span class="label">よこ</span><span><input type="range" id="config_friend_position_x" class="ui_config_composite"></span><span id="config_friend_position_x_numeric" class="numeric"></span>
+                </div>
+                <div class="layout_flex_horizontal layout_flex_nowrap ui_range">
+                  <span class="label">たて</span><span><input type="range" id="config_friend_position_y" class="ui_config_composite"></span><span id="config_friend_position_y_numeric" class="numeric"></span>
+                </div>
+              </div>
+              <div id="config_ui_button_container" class="layout_flex_horizontal">
+                <span><button id="config_friend_position_left">左寄せ</button></span>
+                <span><button id="config_friend_position_right">右寄せ</button></span>
+                <span><button id="config_friend_position_top">上寄せ</button></span>
+                <span><button id="config_friend_position_bottom">下寄せ</button></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <h2>つかいかた</h2>
+      <div id="example" class="layout_flex_vertical">
+        <p>「フレンズがぞー」に画像ファイル：</p>
+        <div class="image_example">
+          <img src="animal_serval.png" id="serval" class="image_example">
+        </div>
+        <p>「背景がぞー」に画像ファイル：</p>
+        <div class="image_example">
+          <img src="ferris_wheel.jpg" class="image_example">
+        </div>
+        <p>をそれぞれ指定すると、「合成がぞー」にアニメエンディングっぽい画像ができるよ！</p>
+        <div class="image_example">
+          <img src="example.png" class="image_example">
+        </div>
+        <p>「フレンズ調整」でととのえて、「ダウンロード」で保存してね！</p>
+      </div>
+      <hr />
+      <div id="footer" class="layout_flex_vertical">
+        <div id="share" class="layout_flex_horizontal">
+          <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          <div class="fb-share-button" data-layout="button" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">シェア</a></div>
+          <div class="g-plus" data-action="share" data-annotation="none"></div>
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          <div class="line-it-button shareln" style="display: none;" data-lang="ja" data-type="share-a"></div><script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+        </div>
+        <div id="thanks" class="layout_flex_horizontal">
+          <span>Special Thanks:</span>
+          <a href="https://aratama.github.io/kemonogen/" target="_blank">けものフレンズ ロゴジェネレータ</a>
+          <a href="https://jquery.com/" target="_blank">jQuery</a>
+          <a href="https://github.com/js-cookie/js-cookie" target="_blank">js-cookie</a>
+          <a href="https://github.com/eligrey/canvas-toBlob.js/" target="_blank">canvas-toBlob.js</a>
+          <a href="https://github.com/eligrey/FileSaver.js/" target="_blank">FileSaver.js</a>
+          <a href="https://www.oreilly.co.jp/books/9784873116877/" target="_blank">プログラミング HTML5 Canvas</a>
+          <a href="https://www.oreilly.co.jp/books/9784873117669/" target="_blank">CSSシークレット</a>
+          <a href="http://www.irasutoya.com/" target="_blank">いらすとや</a>
+          <a href="https://pro.foto.ne.jp/" target="_blank" >プロカメラマンのフリー写真素材・無料画像素材のプロ・フォト</a>
+          <span>...and フレンズのみなさま</span>
+        </div>
+        <div id="site_image" class="layout_flex_horizontal">
+          <img src="site_image.png" alt="けものフレンズ アニメエンディング風 画像ジェネレータ">
+        </div>
+        <div id="author" class="layout_flex_horizontal">
+          <span>作成者：びるず(<a href="https://twitter.com/billstw" target="_blank">twitter:@billstw</a>)</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

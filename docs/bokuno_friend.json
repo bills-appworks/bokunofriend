@@ -1,0 +1,167 @@
+﻿{
+  "image": {
+    "type": {
+      "background": "background",
+      "friend": "friend",
+      "composite": "composite"
+     }
+  },
+  "id": {
+    "image": {
+      "suffix_original_thumbnail": "_image_original_thumbnail",
+      "suffix_filtered": "_image_filtered",
+      "suffix_off_screen": "_image_off_screen",
+      "suffix_file": "_image_file",
+      "suffix_file_view_text": "_image_file_view_text",
+      "composite_popup": "#composite_popup",
+      "composite_saveas": "#composite_saveas",
+      "composite_original_friend": "#composite_original_friend",
+      "composite_zoom": "#composite_zoom",
+      "composite_canvas": "#bokuno_friend_canvas",
+      "composite_image": "#bokuno_friend_image",
+      "background_off": "#background_image_off",
+      "friend_off": "#friend_image_off"
+    },
+    "data": {
+      "type": "type",
+      "file": "file",
+      "original_image": "original_image",
+      "original_width": "original_width",
+      "original_height": "original_height",
+      "canvas_zoom": "canvas_zoom",
+      "composite_view_zoom": "composite_view_zoom",
+      "mousedown": "mousedown",
+      "mousedown_friend_x": "mousedown_friend_x",
+      "mousedown_friend_y": "mousedown_friend_y",
+      "mousedown_x": "mousedown_x",
+      "mousedown_y": "mousedown_y",
+      "layout": "layout",
+      "url": "url"
+    },
+    "config": {
+      "friend_transparency": "#config_friend_transparency",
+      "friend_approximate": "#config_friend_approximate",
+      "friend_zoom": "#config_friend_zoom",
+      "friend_position_x": "#config_friend_position_x",
+      "friend_position_y": "#config_friend_position_y",
+      "friend_position_left": "#config_friend_position_left",
+      "friend_position_right": "#config_friend_position_right",
+      "friend_position_top": "#config_friend_position_top",
+      "friend_position_bottom": "#config_friend_position_bottom",
+      "suffix_numeric": "_numeric"
+    },
+    "layout": {
+      "area_composite_config": "#area_composite_config",
+      "switch_composite_config": "#switch_composite_config"
+    }
+  },
+  "class": {
+    "image": {
+      "on": "view_image_on",
+      "off": "view_image_off",
+      "original": "view_original",
+      "dragenter": "frame_hover",
+      "example": "image_example"
+    },
+    "ui": {
+      "image": {
+        "file_view": "ui_image_file_view",
+        "file": "ui_image_file",
+        "off": "ui_image_off"
+      },
+      "config": {
+        "friend": "ui_config_friend",
+        "composite": "ui_config_composite"
+      },
+      "text_disable": "text_disable",
+      "button_disable": "button_disable"
+    },
+    "share": {
+      "all": "share_all",
+      "twitter": "share_tw",
+      "facebook": "fb-share-button",
+      "googleplus": "share_gp",
+      "hatena": "share_ha",
+      "line": "share_ln"
+    },
+    "layout": {
+      "composite_config": {
+        "type01": "layout_composite_config_01",
+        "type02": "layout_composite_config_02",
+        "type03": "layout_composite_config_03",
+        "type04": "layout_composite_config_04"
+      }
+    }
+  },
+  "config": {
+    "composite_zoom": {
+      "default": 1,
+      "min": 0.1,
+      "max": 1,
+      "step": 0.1
+    },
+    "friend_transparency": {
+      "default": 70,
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    "friend_approximate": {
+      "default": 10,
+      "min": 0,
+      "max": 255,
+      "step": 1
+    },
+    "friend_zoom": {
+      "default": 1,
+      "min": 0.1,
+      "max": 10,
+      "step": 0.1
+    },
+    "friend_position_x": {
+      "default": 0,
+      "min": 0,
+      "max": 0,
+      "step": 1
+    },
+    "friend_position_y": {
+      "default": 0,
+      "min": 0,
+      "max": 0,
+      "step": 1
+    }
+  },
+  "filter": {
+    "friend_plain_value": 128
+  },
+  "message": {
+    "file_type_is_not_image": "画像ファイル以外は指定できません。",
+    "image_description": {
+      "font_style": "normal normal bold 2em",
+      "font_family": "\"ヒラギノ丸ゴ Pro W4\",\"ヒラギノ丸ゴ Pro\",\"Hiragino Maru Gothic Pro\",\"ヒラギノ角ゴ Pro W3\",\"Hiragino Kaku Gothic Pro\",\"Meiryo\"",
+      "fill_style": "#DDEE66",
+      "friend_line1": "フレンズの",
+      "background_line1": "背景の",
+      "original_line2": "がぞーファイルを",
+      "original_line3": "ここにドロップ(ファイル選択)",
+      "composite_line1": "合成したあとは",
+      "composite_line2": "マウスドラッグ(スワイプ)で",
+      "composite_line3": "フレンズをうごかせるよ！"
+    }
+  },
+  "file": {
+    "saveas": "bokuno_friend.png"
+  },
+  "share": {
+    "ogp_url_selector": "meta[property='og:url']",
+    "ogp_image_selector": "meta[property='og:image']",
+    "twitter_image_selector": "meta[name='twitter:image']",
+    "meta_content": "content"
+  },
+  "cookie": {
+    "expires": 60,
+    "name": {
+      "layout_composite_config": "layout_composite_config"
+    }
+  }
+}
