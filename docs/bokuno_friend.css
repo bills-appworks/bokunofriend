@@ -1,4 +1,11 @@
-﻿html, body {
+﻿/*
+ * 「けものフレンズ」アニメエンディング風画像ジェネレータ
+ * Copyright (c) 2017 bills-appworks
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+
+html, body {
   margin: 0;
 }
 
@@ -250,7 +257,7 @@ button:disabled {
   height: auto;
 }
 
-#thanks, #author {
+#thanks, #author, #license {
   max-width: 100%;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
@@ -260,7 +267,7 @@ button:disabled {
   margin-right: 0.5em;
 }
 
-#thanks a, #author a {
+#thanks a, #author a, #license a {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6),
                -1px 1px 1px rgba(255, 255, 255, 0.6),
                -1px -1px 1px rgba(255, 255, 255, 0.6),
