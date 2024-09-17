@@ -257,7 +257,7 @@ button:disabled {
   height: auto;
 }
 
-#thanks, #author, #license {
+#thanks, #author, #license, #copyright, #privacy_policy {
   max-width: 100%;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
@@ -267,7 +267,7 @@ button:disabled {
   margin-right: 0.5em;
 }
 
-#thanks a, #author a, #license a {
+#thanks a, #author a, #license a, #copyright a, #privacy_policy a {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6),
                -1px 1px 1px rgba(255, 255, 255, 0.6),
                -1px -1px 1px rgba(255, 255, 255, 0.6),
